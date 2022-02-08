@@ -1,0 +1,16 @@
+---
+# this comment is a also hack
+version: '3'
+services:
+  guacamole:
+    image: oznu/guacamole
+    container_name: guacamole
+    volumes:
+      - /docker/docker-compose/guacamole/config:/config
+      - /docker/docker-compose/guacamole/etc_guacamole:/etc/guacamole
+    ports:
+      - 8081:8080
+    restart:  unless-stopped
+    deploy:
+      restart_policy:
+        condition: on-failure
