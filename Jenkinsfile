@@ -3,11 +3,6 @@ pipeline {
 
     environment {
         ANSIBLE_REPO = '/var/lib/jenkins/workspace/ansible_master'
-        SCRIPTS_REPO = '/var/lib/jenkins/workspace/scripts_master'
-        PORTAINER_DEV_PASS = credentials('PORTAINER_DEV_PASS')
-        PORTAINER_PRD_PASS = credentials('PORTAINER_PRD_PASS')
-        LOCAL_REPO_DEV = '/var/lib/jenkins/workspace/docker_dev_test'
-        LOCAL_REPO_PRD = '/var/lib/jenkins/workspace/docker_master'
         WEBHOOK = credentials('JENKINS_DISCORD')
         PORTAINER_DEV_WEBHOOK = credentials('PORTAINER_WEBHOOK_DEV_GUAC')
         PORTAINER_PRD_WEBHOOK = credentials('PORTAINER_WEBHOOK_PRD_GUAC')
