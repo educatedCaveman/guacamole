@@ -19,7 +19,7 @@ pipeline {
 
     stages {
         // deploy code to lv-426.lab, when the branch is 'dev_test'
-        stage('deploy dev code') {
+        stage('deploy code (DEV)') {
             when { 
                 expression { env.BRANCH_NAME == 'dev_test' } 
             }
@@ -31,7 +31,7 @@ pipeline {
         }
         // trigger portainer redeploy
         // separated out so this only gets run if the ansible playbook doesn't fail
-        stage('redeploy portainer stack') {
+        stage('redeploy portainer stack (DEV)') {
             when { 
                 expression { env.BRANCH_NAME == 'dev_test' } 
             }
@@ -43,7 +43,7 @@ pipeline {
         }
 
         // deploy code to sevastopol, when the branch is 'master'
-        stage('deploy prd code') {
+        stage('deploy code (PRD)') {
             when { branch 'master' }
             steps {
                 // deploy configs to PRD
@@ -54,7 +54,7 @@ pipeline {
 
         // trigger portainer redeploy
         // separated out so this only gets run if the ansible playbook doesn't fail
-        stage('redeploy portainer stack') {
+        stage('redeploy portainer stack (PRD)') {
             when { branch 'master' }
             steps {
                 // deploy configs to DEV
