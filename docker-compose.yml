@@ -1,5 +1,5 @@
 ---
-# this comment is a also hack
+# this comment is a hack
 version: '3'
 services:
   guacamole:
