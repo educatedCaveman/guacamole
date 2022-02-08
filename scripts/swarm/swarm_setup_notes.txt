@@ -1,0 +1,15 @@
+docker swarm init
+
+docker swarm join-token manager
+
+join managers:
+docker swarm join --token SWMTKN-1-0q9pdvn5j8rfiwxjopkvbgxxaidwxbasfvq7zwqumrs01oaagm-behyeu143dylt639j5cg47v1w 192.168.13.25:2377
+
+join workers:
+docker swarm join --token SWMTKN-1-0q9pdvn5j8rfiwxjopkvbgxxaidwxbasfvq7zwqumrs01oaagm-ddp7ysrqfge4top2m1olusg1b 192.168.13.25:2377
+
+after setting up the HA cluster, need to add a common place for portainer data.  i chose a NFS mount.  bc of this, I also needed to modify the portainer deployment yml to use the NFS mount as its persistent directory
+
+
+
+
