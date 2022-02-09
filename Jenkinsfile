@@ -15,9 +15,7 @@ pipeline {
     stages {
         // deploy code to lv-426.lab, when the branch is 'dev_test'
         stage('deploy code (DEV)') {
-            when { 
-                expression { env.BRANCH_NAME == 'dev_test' } 
-            }
+            when { branch 'dev_test' }
             steps {
                 // deploy configs to DEV
                 echo 'deploy docker config files (DEV)'
@@ -27,9 +25,7 @@ pipeline {
         // trigger portainer redeploy
         // separated out so this only gets run if the ansible playbook doesn't fail
         stage('redeploy portainer stack (DEV)') {
-            when { 
-                expression { env.BRANCH_NAME == 'dev_test' } 
-            }
+            when { branch 'dev_test' }
             steps {
                 // deploy configs to DEV
                 echo 'Redeploy DEV stack'
@@ -46,7 +42,6 @@ pipeline {
                 sh 'ansible-playbook ${ANSIBLE_REPO}/deploy/docker/deploy_docker_compose_prd.yml --extra-vars repo="guacamole"'
             }
         }
-
         // trigger portainer redeploy
         // separated out so this only gets run if the ansible playbook doesn't fail
         stage('redeploy portainer stack (PRD)') {
