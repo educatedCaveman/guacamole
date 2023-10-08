@@ -3,7 +3,7 @@
 version: '3'
 services:
   guacamole:
-    image: oznu/guacamole
+    image: oznu/guacamole@sha256:6268b3a08d9b3d71e1f8edfd593af95f0e1082b5f3d8649321b45c64e182a3a4
     container_name: guacamole
     volumes:
       - /docker/docker-compose/guacamole/config:/config
